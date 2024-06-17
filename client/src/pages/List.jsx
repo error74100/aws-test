@@ -8,8 +8,8 @@ function List() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    const getBoardList = () => {
-      Axios.get('http://localhost:8000/list', {})
+    const getBoardList = async () => {
+      await Axios.get('http://localhost:8000/list', {})
         .then((res) => {
           setList(res.data);
         })
