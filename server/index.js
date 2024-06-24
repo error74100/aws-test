@@ -19,7 +19,7 @@ app.listen(PORT, () => {
 });
 
 /* list */
-app.get('/list', (req, res) => {
+app.get('/api/list', (req, res) => {
   const userQuery = `select IDX, TITLE, CONTENT, CREATED_BY, DATE_FORMAT(CREATED_AT, '%Y-%m-%d') as CREATED_AT from test_board;`;
 
   dbConnect.query(userQuery, (err, result) => {
@@ -28,7 +28,7 @@ app.get('/list', (req, res) => {
 });
 
 /* create */
-app.post('/write', (req, res) => {
+app.post('/api/write', (req, res) => {
   const title = req.body.text.title;
   const writer = req.body.text.writer;
   const content = req.body.text.content;
@@ -41,7 +41,7 @@ app.post('/write', (req, res) => {
 });
 
 /* read */
-app.post('/view/:idx', (req, res) => {
+app.post('/api/view/:idx', (req, res) => {
   const idx = req.params.idx;
 
   const userQuery = `select IDX, TITLE, CONTENT, CREATED_BY, DATE_FORMAT(CREATED_AT, '%Y-%m-%d') as CREATED_AT from test_board where IDX=?;`;
@@ -52,7 +52,7 @@ app.post('/view/:idx', (req, res) => {
 });
 
 /* update */
-app.put('/edit/:idx', (req, res) => {
+app.put('/api/edit/:idx', (req, res) => {
   const value = [
     req.body.text.title,
     req.body.text.content,
@@ -68,7 +68,7 @@ app.put('/edit/:idx', (req, res) => {
 });
 
 /* delete */
-app.post('/delete/:idx', (req, res) => {
+app.post('/api/delete/:idx', (req, res) => {
   const idx = req.params.idx;
 
   const userQuery = `delete from test_board where IDX = ?;`;

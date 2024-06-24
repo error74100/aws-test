@@ -22,7 +22,9 @@ function Write() {
 
   const onCreateEvent = () => {
     const onCreate = () => {
-      Axios.post('http://localhost:8000/write', { text })
+      Axios.post(`http://${import.meta.env.VITE_API_HOST}:8000/api/write`, {
+        text,
+      })
         .then((res) => {
           alert('저장 완료되었습니다.');
           nav('/list');

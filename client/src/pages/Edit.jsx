@@ -14,7 +14,10 @@ function Edit() {
 
   useEffect(() => {
     const getBoardItem = () => {
-      Axios.post(`http://localhost:8000/view/${param.idx}`, {})
+      Axios.post(
+        `http://${import.meta.env.VITE_API_HOST}:8000/api/view/${param.idx}`,
+        {}
+      )
         .then((res) => {
           setText({
             title: res.data[0].TITLE,
@@ -40,7 +43,10 @@ function Edit() {
 
   const onDeleteEvent = () => {
     const onDelete = () => {
-      Axios.post(`http://localhost:8000/delete/${param.idx}`, {})
+      Axios.post(
+        `http://${import.meta.env.VITE_API_HOST}:8000/api/delete/${param.idx}`,
+        {}
+      )
         .then((res) => {
           alert('삭제 되었습니다.');
           nav('/list');
@@ -57,7 +63,10 @@ function Edit() {
 
   const onUpdateEvent = () => {
     const onUpdate = () => {
-      Axios.put(`http://localhost:8000/edit/${param.idx}`, { text })
+      Axios.put(
+        `http://${import.meta.env.VITE_API_HOST}:8000/api/edit/${param.idx}`,
+        { text }
+      )
         .then((res) => {
           alert('수정 완료되었습니다.');
           nav(`/view/${param.idx}`);

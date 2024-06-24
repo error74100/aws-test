@@ -9,7 +9,10 @@ function List() {
 
   useEffect(() => {
     const getBoardList = async () => {
-      await Axios.get('http://localhost:8000/list', {})
+      await Axios.get(
+        `http://${import.meta.env.VITE_API_HOST}:8000/api/list`,
+        {}
+      )
         .then((res) => {
           setList(res.data);
         })

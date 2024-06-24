@@ -7,7 +7,7 @@ function Home() {
 
       <div className="container">
         <div className="row">
-          <p>- React + Vite + mySql 게시판</p>
+          <p>- AWS EC2 + Vite + mySql 게시판</p>
         </div>
       </div>
     </div>

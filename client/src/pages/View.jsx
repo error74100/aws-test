@@ -10,7 +10,10 @@ function View() {
 
   useEffect(() => {
     const getBoardItem = () => {
-      Axios.post(`http://localhost:8000/view/${param.idx}`, {})
+      Axios.post(
+        `http://${import.meta.env.VITE_API_HOST}:8000/api/view/${param.idx}`,
+        {}
+      )
         .then((res) => {
           setItem(res.data[0]);
         })
